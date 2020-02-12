@@ -1,2 +1,2 @@
 # HundirLaFLota
-Develop a game
+Final course project
