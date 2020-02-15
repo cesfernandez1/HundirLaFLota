@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
-    public GameObject mainMenu;
     public GameObject optionsMenu;
-
+    public GameObject modesMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,20 +22,16 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-
+        modesMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void OpenOptions()
     {
-        mainMenu.SetActive(false);
+        this.gameObject.SetActive(false);
         optionsMenu.SetActive(true);
     }
 
-    public void CloseOptions()
-    {
-        mainMenu.SetActive(true);
-        optionsMenu.SetActive(false);
-    }
 
     public void CloseGame()
     {
