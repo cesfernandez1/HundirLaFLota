@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenu : MonoBehaviour
+public class VolumeValue : MonoBehaviour
 {
-
-    public GameObject mainMenu;
-
+    Text percentageText;
     // Start is called before the first frame update
     void Start()
     {
-
+        percentageText = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -20,9 +18,8 @@ public class OptionsMenu : MonoBehaviour
         
     }
 
-    public void CloseOptions()
+    public void textUpdate(float value)
     {
-        this.gameObject.SetActive(false);
-        mainMenu.SetActive(true);
+        percentageText.text = Mathf.RoundToInt(value * 100) + "";
     }
 }
