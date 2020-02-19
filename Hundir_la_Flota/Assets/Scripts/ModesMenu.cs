@@ -5,7 +5,8 @@ using UnityEngine;
 public class ModesMenu : MonoBehaviour
 {
     public GameObject mainMenuScreen;
-    public GameObject modesMenuScreen;
+    public GameObject multiplayerMenuScreen;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,17 @@ public class ModesMenu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void IndividualMode()
+    {
+
+    }
+
+    public void MultiplayerMenuScreen()
+    {
+        this.gameObject.SetActive(false);
+        multiplayerMenuScreen.SetActive(true);
     }
 
     public void backMenu()
