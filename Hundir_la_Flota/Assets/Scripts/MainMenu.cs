@@ -8,10 +8,11 @@ public class MainMenu : MonoBehaviour
 
     public GameObject optionsMenu;
     public GameObject modesMenu;
+    public AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio.mute = false;
     }
 
     // Update is called once per frame
