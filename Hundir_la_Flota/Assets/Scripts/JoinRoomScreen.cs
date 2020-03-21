@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateRoomScreen : MonoBehaviour
+public class JoinRoomScreen : MonoBehaviour
 {
 
     public GameObject multiplayerScreen;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void backMultiplayer()
