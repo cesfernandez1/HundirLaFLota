@@ -6,6 +6,7 @@ public class ModesMenu : MonoBehaviour
 {
     public GameObject mainMenuScreen;
     public GameObject multiplayerMenuScreen;
+    public GameObject gridOrderScreen;
 
 
     // Start is called before the first frame update
@@ -35,5 +36,11 @@ public class ModesMenu : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         mainMenuScreen.SetActive(true);
+    }
+
+    public void GridOrderScreen()
+    {
+        this.gameObject.SetActive(false);
+        gridOrderScreen.SetActive(true);
     }
 }
