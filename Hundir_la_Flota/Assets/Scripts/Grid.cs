@@ -66,6 +66,8 @@ public class Grid : MonoBehaviour
             var pos_x_offset = offset.x * colNumber;
             var pos_y_offset = offset.y * rowNumber;
             square.GetComponent<RectTransform>().anchoredPosition = new Vector3(startPosition.x + pos_x_offset, startPosition.y - pos_y_offset);
+            square.GetComponent<GridSquare>().setPosition(colNumber,rowNumber);
+            square.GetComponent<GridSquare>().setValue(0);
             colNumber++;
         }
     }
