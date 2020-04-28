@@ -9,7 +9,6 @@ public class GridSquare : MonoBehaviour
     private int row;
     private int value;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +43,7 @@ public class GridSquare : MonoBehaviour
 
     public void DrawPosition()
     {
-        Debug.Log("Has presionado la celda COL:" + col + " ROW:" + row);
+        Debug.Log("Has presionado la celda COL:" + (col+1) + " ROW:" + (row+1));
     }
 
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
 
-    public int cols = 0;
-    public int rows = 0;
+    private int cols = 10;
+    private int rows = 10;
     public float every_square_offset = 0.0f;
     public GameObject grid_square;
     public Vector2 startPosition = new Vector2(0.0f, 0.0f);
@@ -14,6 +14,8 @@ public class Grid : MonoBehaviour
 
 
     private List<GameObject> grid_squares = new List<GameObject>();
+    private List<GameObject> myGridSquares;
+
     void Start()
     {
         if (grid_square.GetComponent<GridSquare>() == null)
@@ -70,5 +72,23 @@ public class Grid : MonoBehaviour
             square.GetComponent<GridSquare>().setValue(0);
             colNumber++;
         }
+
+        myGridSquares = grid_squares;
+
+    }
+
+    public int getCol()
+    {
+        return cols;
+    }
+
+    public int getRows()
+    {
+        return rows;
+    }
+
+    public List<GameObject> gridSquare()
+    {
+        return myGridSquares;
     }
 }
