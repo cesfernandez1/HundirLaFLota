@@ -13,10 +13,16 @@ public class Grid : MonoBehaviour
     public float square_scale = 1.0f;
 
 
-    private List<GameObject> grid_squares = new List<GameObject>();
-    private List<GameObject> myGridSquares;
+    private List<GameObject> grid_squares;
 
     void Start()
+    {
+        //if (grid_square.GetComponent<GridSquare>() == null)
+        //    Debug.LogError("grid_square object need to have GridSquare script attached");
+        //CreateGrid();
+    }
+
+    private void OnEnable()
     {
         if (grid_square.GetComponent<GridSquare>() == null)
             Debug.LogError("grid_square object need to have GridSquare script attached");
@@ -28,8 +34,9 @@ public class Grid : MonoBehaviour
     {
     }
 
-    private void CreateGrid()
+    public void CreateGrid()
     {
+        grid_squares = new List<GameObject>();
         SpawnGridSquares();
         SetSquaresPosition();
     }
@@ -73,8 +80,6 @@ public class Grid : MonoBehaviour
             colNumber++;
         }
 
-        myGridSquares = grid_squares;
-
     }
 
     public int getCol()
@@ -89,6 +94,6 @@ public class Grid : MonoBehaviour
 
     public List<GameObject> gridSquare()
     {
-        return myGridSquares;
+        return grid_squares;
     }
 }

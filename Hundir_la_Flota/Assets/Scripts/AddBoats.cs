@@ -11,12 +11,13 @@ public class AddBoats : MonoBehaviour
 
     public InputField inputCols;
     public InputField inputRows;
-    public Dropdown boats;
-    public Dropdown positions;
+    public Dropdown dropDownBoats;
+    public Dropdown dropDownPositions;
     public GameObject myGrid;
     public GameObject gridSquare;
     private int cols;
     private int rows;
+
 
     private List<GameObject> gridSquares;
 
@@ -52,11 +53,21 @@ public class AddBoats : MonoBehaviour
             PlaceBoat(cols, rows);
             Debug.Log("Has seleccionado la Columna:" + cols + " Fila: " + rows);
         }
-        else
+        else if(getCols())
         {
-            EditorUtility.DisplayDialog("Error", "Introduzca una columna/fila correcta", "aceptar");
+            //Mensaje de error de las columnas
+            //EditorUtility.DisplayDialog("Error", "Introduzca una columna/fila correcta", "aceptar");
+        }else if (getRows())
+        {
+            //Mensaje de error de las filas
         }
     }
+
+    //public void getDropDownValues()
+    //{
+    //    dropDownBoats.
+    //    //boats
+    //}
 
     private bool getCols()
     {
@@ -84,28 +95,15 @@ public class AddBoats : MonoBehaviour
 
     private void PlaceBoat(int c, int r)
     {
-        //foreach(GameObject gridSquare in gridSquares)
-        //{
-        //    if(((cols-1) == gridSquare.GetComponent<GridSquare>().getCol()) && ((rows-1)  == gridSquare.GetComponent<GridSquare>().getRow()))
-        //    {
-        //        this.gridSquare.GetComponent<Image>().color = Color.gray;
-        //        this.gridSquare.GetComponent<GridSquare>().setValue(1);
-        //    }
-        //}
-
-        for (int ro = 0; ro < 10; ro++)
+        foreach (GameObject gridSquare in gridSquares)
         {
-            for (int co = 0; co < 10; co++)
+            if (((c - 1) == gridSquare.GetComponent<GridSquare>().getCol()) && ((r - 1) == gridSquare.GetComponent<GridSquare>().getRow()))
             {
-                if (((c - 1) == gridSquare.GetComponent<GridSquare>().getCol()) && ((r - 1) == gridSquare.GetComponent<GridSquare>().getRow()))
-                {
-                    this.gridSquare.GetComponent<Image>().color = Color.white;
-                    this.gridSquare.GetComponent<GridSquare>().setValue(1);
-                }
+                gridSquare.GetComponent<Image>().color = Color.gray;
+                gridSquare.GetComponent<GridSquare>().setValue(1);
+                gridSquare.GetComponent<Button>().interactable = false;
             }
         }
-
-
     }
 
     private bool vocalToInt(string vocal)

@@ -8,6 +8,7 @@ public class GridSquare : MonoBehaviour
     private int col;
     private int row;
     private int value;
+    private GameObject gridSquare;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,6 @@ public class GridSquare : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
     }
 
     public void setPosition(int c, int r)
@@ -41,9 +41,21 @@ public class GridSquare : MonoBehaviour
         return row;
     }
 
+    public int getValue()
+    {
+        return value;
+    }
+
     public void DrawPosition()
     {
-        Debug.Log("Has presionado la celda COL:" + (col+1) + " ROW:" + (row+1));
+        Debug.Log("Has presionado la celda COL: " + (col+1) + " ROW: " + (row+1) + " Valor: " + value);
+
+    }
+
+    public void saveGridSquare()
+    {
+        gridSquare = GameObject.Find("tedGridSquaredSquare");
+        gridSquare.GetComponent<prueba>().getGridSquare(this);
     }
 
 
