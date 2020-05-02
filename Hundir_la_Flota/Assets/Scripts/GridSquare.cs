@@ -9,6 +9,7 @@ public class GridSquare : MonoBehaviour
     private int row;
     private int value;
     private GameObject gridSquare;
+    private bool boatAttached = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,11 @@ public class GridSquare : MonoBehaviour
         value = v;
     }
 
+    public void setBoat()
+    {
+        boatAttached = true;
+    }
+
     public int getCol()
     {
         return col;
@@ -46,15 +52,20 @@ public class GridSquare : MonoBehaviour
         return value;
     }
 
+    public bool getBoat()
+    {
+        return boatAttached;
+    }
+
     public void DrawPosition()
     {
-        Debug.Log("Has presionado la celda COL: " + (col+1) + " ROW: " + (row+1) + " Valor: " + value);
+        Debug.Log("Has presionado la celda COL: " + (col) + " ROW: " + (row) + " Valor: " + value);
 
     }
 
     public void saveGridSquare()
     {
-        gridSquare = GameObject.Find("tedGridSquaredSquare");
+        gridSquare = GameObject.Find("SelectedGridSquare");
         gridSquare.GetComponent<prueba>().getGridSquare(this);
     }
 

@@ -4,27 +4,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class AddBoats : MonoBehaviour
 {
 
-    public InputField inputCols;
-    public InputField inputRows;
-    public Dropdown dropDownBoats;
-    public Dropdown dropDownPositions;
+    private Dropdown dropDownBoats;
+    private Dropdown dropDownPositions;
     public GameObject myGrid;
     public GameObject gridSquare;
+
     private int cols;
     private int rows;
+    private GameObject mySelectedGridSquare;
+    private int orientation;
+    private string boat;
+    private int boatSize;
+    private int nBoat = 0;
+    private Color myColor;
+    private int gridCols;
+    private int gridRows;
+    private GameObject isAdded;
 
-
+    private List<GameObject> boatPlace;
     private List<GameObject> gridSquares;
+
+    Boat[] myBoat = new Boat[8];
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -35,141 +43,158 @@ public class AddBoats : MonoBehaviour
 
     public void getGridDimmensions()
     {
-        int c = 0, r = 0;
 
-        c = myGrid.GetComponent<Grid>().getCol();
-        r = myGrid.GetComponent<Grid>().getRows();
+        gridCols = myGrid.GetComponent<Grid>().getCol();
+        gridRows = myGrid.GetComponent<Grid>().getRows();
 
-
-        Debug.Log("Nuestro Grid tiene " + c + " columnas y " + r + "filas.");
     }
 
-    public void getInputfields()
+    public void getValues()
     {
         gridSquares = myGrid.GetComponent<Grid>().gridSquare();
+        mySelectedGridSquare = GameObject.Find("SelectedGridSquare");
 
-        if (getCols() && getRows())
+        orientation = getBoatOrientation();
+        boat = getBoat();
+
+        boatSize = getBoatSize(boat);
+
+        cols = mySelectedGridSquare.GetComponent<prueba>().getCol();
+        rows = mySelectedGridSquare.GetComponent<prueba>().getRow();
+
+        isAdded = GameObject.Find("BoatAdded");
+        isAdded.GetComponent<boatIsAdded>().setAdded(false);
+
+
+        if (checkSpace(gridCols, gridRows, boatSize, cols, rows, orientation))
         {
-            PlaceBoat(cols, rows);
-            Debug.Log("Has seleccionado la Columna:" + cols + " Fila: " + rows);
+            PlaceBoat(cols, rows, boatSize, orientation, myColor);
+            isAdded.GetComponent<boatIsAdded>().setAdded(true);
         }
-        else if(getCols())
+
+        if (isAdded.GetComponent<boatIsAdded>().getAdded())
         {
-            //Mensaje de error de las columnas
-            //EditorUtility.DisplayDialog("Error", "Introduzca una columna/fila correcta", "aceptar");
-        }else if (getRows())
+            dropDownBoats.GetComponent<DropDownBoats>().getValue();
+        }
+
+
+
+        Debug.Log("Has seleccionado la Columna:" + cols + " Fila: " + rows);
+
+    }
+
+    private void PlaceBoat(int c, int r, int tamaño, int orientacion, Color color)
+    {
+        foreach (GameObject gridSquare in boatPlace)
         {
-            //Mensaje de error de las filas
+            //if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()))
+            //{
+            gridSquare.GetComponent<Image>().color = color;
+            gridSquare.GetComponent<GridSquare>().setValue(tamaño);
+            gridSquare.GetComponent<GridSquare>().setBoat();
+            gridSquare.GetComponent<Button>().interactable = false;
+            //}
         }
     }
 
-    //public void getDropDownValues()
-    //{
-    //    dropDownBoats.
-    //    //boats
-    //}
-
-    private bool getCols()
+    private int getBoatOrientation()
     {
-        if (inputCols.text == string.Empty)
-        {
-            return false;
-        }
-        else
-        {
-            return controlCol(inputCols.text);
-        }
+        //Si es 0 => Vertical ( aumentamos las columnas) ; Si es 1 => Horizontal (aumentamos las filas)
+        dropDownPositions = GameObject.Find("Dropdown-BoatsPosition").GetComponent<Dropdown>();
+
+        return dropDownPositions.value;
     }
 
-    private bool getRows()
+    private string getBoat()
     {
-        if ((inputRows.text == string.Empty))
-        {
-            return false;
-        }
-        else
-        {
-            return vocalToInt(inputRows.text);
-        }
+        dropDownBoats = GameObject.Find("Dropdown-Boats").GetComponent<Dropdown>();
+        return dropDownBoats.captionText.text;
     }
 
-    private void PlaceBoat(int c, int r)
+    private int getBoatSize(string name)
     {
-        foreach (GameObject gridSquare in gridSquares)
+
+        if (name.Equals("Lancha (1 casilla)"))
         {
-            if (((c - 1) == gridSquare.GetComponent<GridSquare>().getCol()) && ((r - 1) == gridSquare.GetComponent<GridSquare>().getRow()))
+            myBoat[nBoat] = new Boat(1, 1, "Lancha", nBoat);
+            myColor = Color.red;
+            nBoat++;
+            return 1;
+        }
+        else if (name.Equals("Buque (2 casillas)"))
+        {
+            myBoat[nBoat] = new Boat(2, 2, "Buque", nBoat);
+            myColor = Color.magenta;
+            nBoat++;
+            return 2;
+        }
+        else if (name.Equals("Submarino (3 casillas)"))
+        {
+            myBoat[nBoat] = new Boat(3, 3, "Submarino", nBoat);
+            myColor = Color.green;
+            nBoat++;
+            return 3;
+        }
+        else if (name.Equals("Portaaviones (5 casillas)"))
+        {
+            myBoat[nBoat] = new Boat(5, 5, "Portaaviones", nBoat);
+            myColor = Color.blue;
+            nBoat++;
+            return 5;
+        }
+
+        return 0;
+    }
+
+    private bool checkSpace(int gridC, int gridR, int boatS, int c, int r, int o)
+    {
+
+        boatPlace = new List<GameObject>();
+
+        if (o == 0)
+        {
+            int p = 0;
+            if ((c + boatS) <= (gridC - 1))
             {
-                gridSquare.GetComponent<Image>().color = Color.gray;
-                gridSquare.GetComponent<GridSquare>().setValue(1);
-                gridSquare.GetComponent<Button>().interactable = false;
+                foreach (GameObject gridSquare in gridSquares)
+                {
+                    if (((c == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow())) && (p != boatSize))
+                    {
+                        boatPlace.Add(gridSquare);
+                        if (gridSquare.GetComponent<GridSquare>().getBoat())
+                            return false;
+                        c++;
+                        p++;
+                    }
+                }
             }
         }
-    }
-
-    private bool vocalToInt(string vocal)
-    {
-        if (vocal.ToUpper().Equals("A"))
+        else
         {
-            rows = 1;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("B"))
-        {
-            rows = 2;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("C"))
-        {
-            rows = 3;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("D"))
-        {
-            rows = 4;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("E"))
-        {
-            rows = 5;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("F"))
-        {
-            rows = 6;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("G"))
-        {
-            rows = 7;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("H"))
-        {
-            rows = 8;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("I"))
-        {
-            rows = 9;
-            return true;
-        }
-        else if (vocal.ToUpper().Equals("J"))
-        {
-            rows = 10;
-            return true;
-        }
-        return false;
-    }
-
-    private bool controlCol(string columna)
-    {
-        int c = Int32.Parse(columna);
-        if ((c > 0) && (c < 11))
-        {
-            cols = c;
-            return true;
+            if ((r + boatS) <= (gridR - 1))
+            {
+                foreach (GameObject gridSquare in gridSquares)
+                {
+                    if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()))
+                    {
+                        boatPlace.Add(gridSquare);
+                    }
+                    if ((r + boatS) != r)
+                        r++;
+                }
+            }
         }
 
-        return false;
+        foreach (GameObject gridSquare in boatPlace)
+        {
+            if (gridSquare.GetComponent<GridSquare>().getBoat())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
+
+
 }

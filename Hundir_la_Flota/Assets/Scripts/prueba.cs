@@ -14,7 +14,7 @@ public class prueba : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myObject = GameObject.Find("tedGridSquaredSquare");
+        myObject = GameObject.Find("SelectedGridSquare");
     }
 
     // Update is called once per frame
@@ -35,5 +35,15 @@ public class prueba : MonoBehaviour
         cols = gridSquare.getCol();
         rows = gridSquare.getRow();
         value = gridSquare.getValue();
+    }
+
+    public int getCol()
+    {
+        return cols;
+    }
+
+    public int getRow()
+    {
+        return rows;
     }
 }

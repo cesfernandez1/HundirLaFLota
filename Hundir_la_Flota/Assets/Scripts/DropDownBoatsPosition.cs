@@ -21,7 +21,7 @@ public class DropDownBoatsPosition : MonoBehaviour
 
     void FillDropdownPosition()
     {
-        List<string> positions = new List<string>() { "Vertical ▼", "Horizontal ►" };
+        List<string> positions = new List<string>() { "Horizontal ►" , "Vertical ▼" };
         dropdown.AddOptions(positions);
     }
 }

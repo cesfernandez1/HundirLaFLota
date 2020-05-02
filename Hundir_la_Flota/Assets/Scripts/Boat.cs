@@ -10,13 +10,16 @@ public class Boat : MonoBehaviour
     private int value;
     private string title;
     private bool added;
+    private int id;
+    private int[] position;
 
 
-    public Boat(int s, int v, string t)
+    public Boat(int s, int v, string t, int i)
     {
         size = s;
         value = v;
         title = t;
+        id = i;
     }
 
     public void setName(string n)
@@ -38,4 +41,32 @@ public class Boat : MonoBehaviour
     {
         added = t;
     }
+
+    public void setPosition(int x, int y)
+    {
+        position[0] = x;
+        position[1] = y;
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
+
+    public string getName()
+    {
+        return name;
+    }
+
+    public int getValue()
+    {
+        return value;
+    }
+
+    public int[] getPosition()
+    {
+        return position;
+    }
 }
+
+
