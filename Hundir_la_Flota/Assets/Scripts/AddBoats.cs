@@ -24,6 +24,8 @@ public class AddBoats : MonoBehaviour
     private int gridCols;
     private int gridRows;
     private GameObject isAdded;
+    private Button myButton;
+    private Button startButton;
 
     private List<GameObject> boatPlace;
     private List<GameObject> gridSquares;
@@ -33,6 +35,8 @@ public class AddBoats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startButton = GameObject.Find("StartGameButton").GetComponent<Button>();
+        startButton.enabled = false;
     }
 
     // Update is called once per frame
@@ -75,6 +79,16 @@ public class AddBoats : MonoBehaviour
         if (isAdded.GetComponent<boatIsAdded>().getAdded())
         {
             dropDownBoats.GetComponent<DropDownBoats>().getValue();
+        }
+        else
+        {
+            nBoat--;
+        }
+
+        if(nBoat == 8)
+        {
+            myButton = GameObject.Find("AddBoatButton").GetComponent<Button>();
+            myButton.enabled = false;
         }
 
 
@@ -154,7 +168,7 @@ public class AddBoats : MonoBehaviour
         if (o == 0)
         {
             int p = 0;
-            if ((c + boatS) <= (gridC - 1))
+            if ((c + boatS) <= (gridC))
             {
                 foreach (GameObject gridSquare in gridSquares)
                 {
@@ -168,21 +182,34 @@ public class AddBoats : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                return false;
+            }
+
         }
         else
         {
-            if ((r + boatS) <= (gridR - 1))
+            int p = 0;
+            if ((r + boatS) <= (gridR))
             {
                 foreach (GameObject gridSquare in gridSquares)
                 {
-                    if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()))
+                    if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()) && (p != boatSize))
                     {
                         boatPlace.Add(gridSquare);
-                    }
-                    if ((r + boatS) != r)
+                        if (gridSquare.GetComponent<GridSquare>().getBoat())
+                            return false;
                         r++;
+                        p++;
+                    }
                 }
             }
+            else
+            {
+                return false;
+            }
+
         }
 
         foreach (GameObject gridSquare in boatPlace)
