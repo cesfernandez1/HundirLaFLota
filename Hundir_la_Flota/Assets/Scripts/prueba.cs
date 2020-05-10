@@ -27,14 +27,6 @@ public class prueba : MonoBehaviour
         gridSquare = myGridSquare;
         cols = gridSquare.getCol();
         rows = gridSquare.getRow();
-        gridSquare.setValue(3);
-    }
-
-    public void getDates()
-    {
-        cols = gridSquare.getCol();
-        rows = gridSquare.getRow();
-        value = gridSquare.getValue();
     }
 
     public int getCol()

@@ -75,6 +75,9 @@ public class AddBoats : MonoBehaviour
             PlaceBoat(cols, rows, boatSize, orientation, myColor);
             isAdded.GetComponent<boatIsAdded>().setAdded(true);
         }
+        else
+        {
+        }
 
         if (isAdded.GetComponent<boatIsAdded>().getAdded())
         {
@@ -89,6 +92,7 @@ public class AddBoats : MonoBehaviour
         {
             myButton = GameObject.Find("AddBoatButton").GetComponent<Button>();
             myButton.enabled = false;
+            startButton.enabled = true;
         }
 
 
@@ -222,6 +226,5 @@ public class AddBoats : MonoBehaviour
 
         return true;
     }
-
 
 }
