@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Boat : MonoBehaviour
+public class Boat
 {
 
     private int size;
@@ -12,6 +12,8 @@ public class Boat : MonoBehaviour
     private bool added;
     private int id;
     private int[] position;
+    private int impacts;
+    private bool sunken;
 
 
     public Boat(int s, int v, string t, int i)
@@ -20,6 +22,14 @@ public class Boat : MonoBehaviour
         value = v;
         title = t;
         id = i;
+    }
+
+    public Boat()
+    {
+        size = 0;
+        value = 0;
+        title = "Vacio";
+        id = -1;
     }
 
     public void setName(string n)
@@ -55,7 +65,7 @@ public class Boat : MonoBehaviour
 
     public string getName()
     {
-        return name;
+        return title;
     }
 
     public int getValue()
@@ -63,9 +73,31 @@ public class Boat : MonoBehaviour
         return value;
     }
 
+    public void setID(int i)
+    {
+        id = i;
+    }
+
     public int[] getPosition()
     {
         return position;
+    }
+
+    public int getImpacts()
+    {
+        return impacts;
+    }
+
+    public void setImpact()
+    {
+        impacts += 1;
+    }
+
+    public bool isSunken()
+    {
+        if (impacts == size)
+            return true;
+        return false;
     }
 }
 

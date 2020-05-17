@@ -10,6 +10,7 @@ public class GridSquare : MonoBehaviour
     private int value;
     private GameObject gridSquare;
     private bool boatAttached = false;
+    private Boat boat;
 
     // Start is called before the first frame update
     void Start()
@@ -59,14 +60,22 @@ public class GridSquare : MonoBehaviour
 
     public void DrawPosition()
     {
-        Debug.Log("Has presionado la celda COL: " + (col) + " ROW: " + (row) + " Valor: " + value);
-
+        //if(this.GetComponent<Boat>() != null)
+        //{
+        //    Debug.Log("Nombre Embarcacion : " + this.GetComponent<Boat>().getName());
+        //}
+        //Debug.Log("Has presionado la celda COL: " + (col) + " ROW: " + (row) + " Valor: " + value + "" + this.GetComponent<Boat>().getName());
     }
 
     public void saveGridSquare()
     {
         gridSquare = GameObject.Find("SelectedGridSquare");
         gridSquare.GetComponent<prueba>().getGridSquare(this);
+    }
+
+    public void addBoat(Boat b)
+    {
+        boat = b;
     }
 
 

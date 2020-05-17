@@ -27,10 +27,9 @@ public class AddBoats : MonoBehaviour
     private Button myButton;
     private Button startButton;
 
+
     private List<GameObject> boatPlace;
     private List<GameObject> gridSquares;
-
-    Boat[] myBoat = new Boat[8];
 
     // Start is called before the first frame update
     void Start()
@@ -103,15 +102,21 @@ public class AddBoats : MonoBehaviour
 
     private void PlaceBoat(int c, int r, int tamaño, int orientacion, Color color)
     {
+
+        Boat b = new Boat(tamaño,tamaño,boat,nBoat);
         foreach (GameObject gridSquare in boatPlace)
         {
-            //if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()))
-            //{
             gridSquare.GetComponent<Image>().color = color;
             gridSquare.GetComponent<GridSquare>().setValue(tamaño);
             gridSquare.GetComponent<GridSquare>().setBoat();
             gridSquare.GetComponent<Button>().interactable = false;
-            //}
+            gridSquare.GetComponent<GridSquare>().addBoat(b);
+            //gridSquare.AddComponent<Boat>();
+            //gridSquare.GetComponent<Boat>().setName(boat);
+            //gridSquare.GetComponent<Boat>().setSize(tamaño);
+            //gridSquare.GetComponent<Boat>().setValue(tamaño);
+            //gridSquare.GetComponent<Boat>().setID(nBoat);
+            //gridSquare.GetComponent<GridSquare>().;
         }
     }
 
@@ -134,28 +139,24 @@ public class AddBoats : MonoBehaviour
 
         if (name.Equals("Lancha (1 casilla)"))
         {
-            myBoat[nBoat] = new Boat(1, 1, "Lancha", nBoat);
             myColor = Color.red;
             nBoat++;
             return 1;
         }
         else if (name.Equals("Buque (2 casillas)"))
         {
-            myBoat[nBoat] = new Boat(2, 2, "Buque", nBoat);
             myColor = Color.magenta;
             nBoat++;
             return 2;
         }
         else if (name.Equals("Submarino (3 casillas)"))
         {
-            myBoat[nBoat] = new Boat(3, 3, "Submarino", nBoat);
             myColor = Color.green;
             nBoat++;
             return 3;
         }
         else if (name.Equals("Portaaviones (5 casillas)"))
         {
-            myBoat[nBoat] = new Boat(5, 5, "Portaaviones", nBoat);
             myColor = Color.blue;
             nBoat++;
             return 5;
