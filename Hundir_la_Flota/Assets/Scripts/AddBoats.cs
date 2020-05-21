@@ -111,12 +111,6 @@ public class AddBoats : MonoBehaviour
             gridSquare.GetComponent<GridSquare>().setBoat();
             gridSquare.GetComponent<Button>().interactable = false;
             gridSquare.GetComponent<GridSquare>().addBoat(b);
-            //gridSquare.AddComponent<Boat>();
-            //gridSquare.GetComponent<Boat>().setName(boat);
-            //gridSquare.GetComponent<Boat>().setSize(tamaño);
-            //gridSquare.GetComponent<Boat>().setValue(tamaño);
-            //gridSquare.GetComponent<Boat>().setID(nBoat);
-            //gridSquare.GetComponent<GridSquare>().;
         }
     }
 

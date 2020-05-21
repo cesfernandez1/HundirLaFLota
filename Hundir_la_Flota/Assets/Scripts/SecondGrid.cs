@@ -81,4 +81,9 @@ public class SecondGrid : MonoBehaviour
         }
     }
 
+    public List<GameObject> getGrid()
+    {
+        return grid;
+    }
+
 }

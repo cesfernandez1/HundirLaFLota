@@ -22,7 +22,7 @@ public class StartGame : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         gamePanel.SetActive(true);
-        gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<Grid>().gridSquare());
-        //gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<GridPC>().getGrid());
+        //gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<Grid>().gridSquare());
+        gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<GridPC>().getGrid());
     }
 }
