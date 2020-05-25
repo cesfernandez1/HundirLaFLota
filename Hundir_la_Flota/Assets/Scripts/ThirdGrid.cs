@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SecondGrid : MonoBehaviour
+public class ThirdGrid : MonoBehaviour
 {
 
     private List<GameObject> grid;
-    private int value;
     public float square_scale = 1.0f;
     public Vector2 startPosition = new Vector2(0.0f, 0.0f);
     public float every_square_offset = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
-        CreateGrid(); 
-    }
-
-    private void OnEnable()
-    {
-
+        CreateGrid();
+        
     }
 
     // Update is called once per frame
@@ -32,11 +27,6 @@ public class SecondGrid : MonoBehaviour
     {
         grid = list;
 
-        //foreach(GameObject gridSquare in grid)
-        //{
-        //    col = gridSquare.GetComponent<GridSquare>().getCol();
-        //    value = gridSquare.GetComponent<GridSquare>().getValue();
-        //}
     }
 
     public void CreateGrid()
@@ -48,7 +38,7 @@ public class SecondGrid : MonoBehaviour
     private void SpawnGridSquares()
     {
         int n = 100;
-        foreach(GameObject gridSquare in grid)
+        foreach (GameObject gridSquare in grid)
         {
             grid[grid.Count - n].transform.parent = this.transform;
             grid[grid.Count - n].transform.localScale = new Vector3(square_scale, square_scale, square_scale);
@@ -84,10 +74,4 @@ public class SecondGrid : MonoBehaviour
             colNumber++;
         }
     }
-
-    public List<GameObject> getGrid()
-    {
-        return grid;
-    }
-
 }

@@ -7,14 +7,19 @@ public class DropDownBoats : MonoBehaviour
 {
 
     public Dropdown dropdown;
-    List<string> boats = new List<string>() { "Lancha (1 casilla)", "Lancha (1 casilla)", "Lancha (1 casilla)", "Buque (2 casillas)", "Buque (2 casillas)", "Submarino (3 casillas)", "Submarino (3 casillas)", "Portaaviones (5 casillas)" };
+    List<string> boats;
 
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+    private void OnEnable()
+    {
+        dropdown.ClearOptions();
+        boats = new List<string>() { "Lancha (1 casilla)", "Lancha (1 casilla)", "Lancha (1 casilla)", "Buque (2 casillas)", "Buque (2 casillas)", "Submarino (3 casillas)", "Submarino (3 casillas)", "Portaaviones (5 casillas)" };
         FillBoatList();
     }
-
     // Update is called once per frame
     void Update()
     {

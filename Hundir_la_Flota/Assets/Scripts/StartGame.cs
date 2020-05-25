@@ -24,5 +24,6 @@ public class StartGame : MonoBehaviour
         gamePanel.SetActive(true);
         //gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<Grid>().gridSquare());
         gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<GridPC>().getGrid());
+        gamePanel.GetComponent<ThirdGrid>().FillList(this.gameObject.GetComponent<Grid>().gridSquare());  
     }
 }

@@ -78,5 +78,20 @@ public class GridSquare : MonoBehaviour
         boat = b;
     }
 
+    public int getBoatId()
+    {
+        return boat.getID();
+    }
+
+    public bool isSunken()
+    {
+        return boat.isSunken();
+    }
+
+    public void addImpact()
+    {
+        boat.setImpact();
+    }
+
 
 }

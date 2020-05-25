@@ -13,7 +13,7 @@ public class Boat
     private int id;
     private int[] position;
     private int impacts;
-    private bool sunken;
+    private bool sunken = false;
 
 
     public Boat(int s, int v, string t, int i)
@@ -95,9 +95,14 @@ public class Boat
 
     public bool isSunken()
     {
-        if (impacts == size)
+        if (impacts == (size * size))
             return true;
         return false;
+    }
+
+    public int getID()
+    {
+        return id;
     }
 }
 

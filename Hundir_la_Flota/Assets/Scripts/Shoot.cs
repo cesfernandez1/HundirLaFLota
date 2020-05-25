@@ -49,7 +49,36 @@ public class Shoot : MonoBehaviour
             {
                 if (gridSquare.GetComponent<GridSquare>().getBoat())
                 {
-                    gridSquare.GetComponent<Image>().color = Color.red;
+                    List<GameObject> boatList = new List<GameObject>();
+                    int ind = gridSquare.GetComponent<GridSquare>().getBoatId();
+
+                    foreach(GameObject gridS in grid)
+                    {
+                        if (gridS.GetComponent<GridSquare>().getBoat())
+                        {
+                            if (ind == gridS.GetComponent<GridSquare>().getBoatId())
+                            {
+                                boatList.Add(gridS);
+                            }
+                        }
+                    }
+
+                    foreach(GameObject gridS in boatList)
+                    {
+                        gridS.GetComponent<GridSquare>().addImpact();
+                    }
+
+                    if (gridSquare.GetComponent<GridSquare>().isSunken())
+                    {
+                        foreach(GameObject gridS in boatList)
+                        {
+                            gridS.GetComponent<Image>().color = Color.red;
+                        }
+                    }
+                    else
+                    {
+                        gridSquare.GetComponent<Image>().color = Color.yellow;
+                    }
                 }
                 else
                 {
