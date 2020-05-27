@@ -8,6 +8,8 @@ public class Shoot : MonoBehaviour
 
     private GameObject selectedGridSquare;
 
+    public GameObject popUpMessage;
+
     public GameObject myGrid;
 
     private int cols;
@@ -36,6 +38,9 @@ public class Shoot : MonoBehaviour
         rows = selectedGridSquare.GetComponent<prueba>().getRow();
 
         shoot(cols,rows);
+
+        StartCoroutine(waiter());
+
 
     }
 
@@ -70,21 +75,38 @@ public class Shoot : MonoBehaviour
 
                     if (gridSquare.GetComponent<GridSquare>().isSunken())
                     {
+
                         foreach(GameObject gridS in boatList)
                         {
                             gridS.GetComponent<Image>().color = Color.red;
                         }
+                        myGrid.GetComponent<BoatsStateController>().addBoatSunken();
                     }
                     else
                     {
                         gridSquare.GetComponent<Image>().color = Color.yellow;
+                        gridSquare.GetComponent<Button>().interactable = false;
                     }
                 }
                 else
                 {
                     gridSquare.GetComponent<Image>().color = Color.cyan;
+                    gridSquare.GetComponent<Button>().interactable = false;
                 }
             }
+
+            if(8 == myGrid.GetComponent<BoatsStateController>().getBoats())
+            {
+                string msg = "¡Enhorabuena! Has ganado";
+                popUpMessage.GetComponent<PopUpPanel>().setVisible(msg);
+            }
         }
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(10);
+
+        //add here the function that IA shoot
     }
 }

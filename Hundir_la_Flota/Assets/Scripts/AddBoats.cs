@@ -12,6 +12,7 @@ public class AddBoats : MonoBehaviour
     private Dropdown dropDownPositions;
     public GameObject myGrid;
     public GameObject gridSquare;
+    public GameObject popUp;
 
     private int cols;
     private int rows;
@@ -76,6 +77,7 @@ public class AddBoats : MonoBehaviour
         }
         else
         {
+            showPopUpPanel();
         }
 
         if (isAdded.GetComponent<boatIsAdded>().getAdded())
@@ -220,6 +222,11 @@ public class AddBoats : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void showPopUpPanel()
+    {
+        popUp.SetActive(true);
     }
 
 }
