@@ -11,6 +11,7 @@ public class GridSquare : MonoBehaviour
     private GameObject gridSquare;
     private bool boatAttached = false;
     private Boat boat;
+    private bool shooted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +92,16 @@ public class GridSquare : MonoBehaviour
     public void addImpact()
     {
         boat.setImpact();
+    }
+
+    public void setShoot()
+    {
+        shooted = true;
+    }
+
+    public bool getShoot()
+    {
+        return shooted;
     }
 
 

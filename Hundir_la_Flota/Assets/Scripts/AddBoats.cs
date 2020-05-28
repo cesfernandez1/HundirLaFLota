@@ -55,7 +55,7 @@ public class AddBoats : MonoBehaviour
 
     public void getValues()
     {
-        gridSquares = myGrid.GetComponent<Grid>().gridSquare();
+        gridSquares = myGrid.GetComponent<Grid>().getGrid();
         mySelectedGridSquare = GameObject.Find("SelectedGridSquare");
 
         orientation = getBoatOrientation();
@@ -111,7 +111,7 @@ public class AddBoats : MonoBehaviour
             gridSquare.GetComponent<Image>().color = color;
             gridSquare.GetComponent<GridSquare>().setValue(tamaño);
             gridSquare.GetComponent<GridSquare>().setBoat();
-            gridSquare.GetComponent<Button>().interactable = false;
+            gridSquare.GetComponent<Button>().enabled = false;
             gridSquare.GetComponent<GridSquare>().addBoat(b);
         }
     }

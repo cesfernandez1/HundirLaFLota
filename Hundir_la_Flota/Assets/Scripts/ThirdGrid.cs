@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ThirdGrid : MonoBehaviour
 {
-
     private List<GameObject> grid;
     public float square_scale = 1.0f;
     public Vector2 startPosition = new Vector2(0.0f, 0.0f);
@@ -71,7 +70,13 @@ public class ThirdGrid : MonoBehaviour
             square.GetComponent<RectTransform>().anchoredPosition = new Vector3(startPosition.x + pos_x_offset, startPosition.y - pos_y_offset);
             square.GetComponent<Button>().interactable = true;
             square.GetComponent<Image>().color = Color.white;
+            square.GetComponent<Button>().enabled = false;
             colNumber++;
         }
+    }
+
+    public List<GameObject> getGrid()
+    {
+        return grid;
     }
 }

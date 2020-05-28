@@ -12,6 +12,8 @@ public class Shoot : MonoBehaviour
 
     public GameObject myGrid;
 
+    public GameObject coverPanel;
+
     private int cols;
     private int rows;
 
@@ -40,8 +42,6 @@ public class Shoot : MonoBehaviour
         shoot(cols,rows);
 
         StartCoroutine(waiter());
-
-
     }
 
     private void shoot(int col, int row)
@@ -79,34 +79,39 @@ public class Shoot : MonoBehaviour
                         foreach(GameObject gridS in boatList)
                         {
                             gridS.GetComponent<Image>().color = Color.red;
+                            gridS.GetComponent<Button>().enabled = false;
                         }
                         myGrid.GetComponent<BoatsStateController>().addBoatSunken();
                     }
                     else
                     {
                         gridSquare.GetComponent<Image>().color = Color.yellow;
-                        gridSquare.GetComponent<Button>().interactable = false;
+                        gridSquare.GetComponent<Button>().enabled = false;
                     }
                 }
                 else
                 {
                     gridSquare.GetComponent<Image>().color = Color.cyan;
-                    gridSquare.GetComponent<Button>().interactable = false;
+                    gridSquare.GetComponent<Button>().enabled = false;
                 }
             }
+        }
 
-            if(8 == myGrid.GetComponent<BoatsStateController>().getBoats())
-            {
-                string msg = "¡Enhorabuena! Has ganado";
-                popUpMessage.GetComponent<PopUpPanel>().setVisible(msg);
-            }
+        if (8 == myGrid.GetComponent<BoatsStateController>().getBoats())
+        {
+            string msg = "¡Enhorabuena! Has ganado";
+            popUpMessage.GetComponent<PopUpPanel>().setVisible(msg);
         }
     }
 
     IEnumerator waiter()
     {
+
+        coverPanel.SetActive(true);
         yield return new WaitForSeconds(10);
 
         //add here the function that IA shoot
+
+        myGrid.GetComponent<IA>().shoot();
     }
 }

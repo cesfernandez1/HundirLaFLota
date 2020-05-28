@@ -92,7 +92,7 @@ public class Grid : MonoBehaviour
         return rows;
     }
 
-    public List<GameObject> gridSquare()
+    public List<GameObject> getGrid()
     {
         return grid_squares;
     }
