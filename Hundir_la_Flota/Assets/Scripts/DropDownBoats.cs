@@ -7,7 +7,7 @@ public class DropDownBoats : MonoBehaviour
 {
 
     public Dropdown dropdown;
-    List<string> boats;
+    private List<string> boats = new List<string>() { "Lancha (1 casilla)", "Lancha (1 casilla)", "Lancha (1 casilla)", "Buque (2 casillas)", "Buque (2 casillas)", "Submarino (3 casillas)", "Submarino (3 casillas)", "Portaaviones (5 casillas)" };
 
     // Start is called before the first frame update
     void Start()
@@ -16,49 +16,53 @@ public class DropDownBoats : MonoBehaviour
     }
     private void OnEnable()
     {
-        dropdown.ClearOptions();
-        boats = new List<string>() { "Lancha (1 casilla)", "Lancha (1 casilla)", "Lancha (1 casilla)", "Buque (2 casillas)", "Buque (2 casillas)", "Submarino (3 casillas)", "Submarino (3 casillas)", "Portaaviones (5 casillas)" };
-        FillBoatList();
+
     }
     // Update is called once per frame
     void Update()
     {
+
     }
 
-    void FillBoatList()
+    public void FillBoatList()
     {
-        //boats = new List<string>() { "Lancha (1 casilla)", "Lancha (1 casilla)", "Lancha (1 casilla)", "Buque (2 casillas)", "Buque (2 casillas)", "Submarino (3 casillas)", "Submarino (3 casillas)", "Portaaviones (5 casillas)" };
+        dropdown.ClearOptions();
+        boats = new List<string>() { "Lancha (1 casilla)", "Lancha (1 casilla)", "Lancha (1 casilla)", "Buque (2 casillas)", "Buque (2 casillas)", "Submarino (3 casillas)", "Submarino (3 casillas)", "Portaaviones (5 casillas)" };
         dropdown.AddOptions(boats);
     }
 
-    public void getValue()
+    public void getValue(string boat)
     {
-        if (boats[dropdown.value].Equals("Lancha (1 casilla)"))
+        if (boat.Equals("Lancha (1 casilla)"))
         {
             dropdown.ClearOptions();
             boats.Remove("Lancha (1 casilla)");
             dropdown.AddOptions(boats);
         }
-        else if (boats[dropdown.value].Equals("Buque (2 casillas)"))
+        else if (boat.Equals("Buque (2 casillas)"))
         {
             dropdown.ClearOptions();
             boats.Remove("Buque (2 casillas)");
             dropdown.AddOptions(boats);
         }
-        else if (boats[dropdown.value].Equals("Submarino (3 casillas)"))
+        else if (boat.Equals("Submarino (3 casillas)"))
         {
             dropdown.ClearOptions();
             boats.Remove("Submarino (3 casillas)");
             dropdown.AddOptions(boats);
         }
-        else if (boats[dropdown.value].Equals("Portaaviones (5 casillas)"))
+        else if (boat.Equals("Portaaviones (5 casillas)"))
         {
             dropdown.ClearOptions();
             boats.Remove("Portaaviones (5 casillas)");
             dropdown.AddOptions(boats);
         }
+    }
 
-
+    public void updateDropDown()
+    {
+        dropdown.ClearOptions();
+        dropdown.AddOptions(boats);
     }
 
 

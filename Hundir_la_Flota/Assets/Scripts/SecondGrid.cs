@@ -90,4 +90,10 @@ public class SecondGrid : MonoBehaviour
         return grid;
     }
 
+
+    public void deleteGrid()
+    {
+        grid.Clear();
+    }
+
 }

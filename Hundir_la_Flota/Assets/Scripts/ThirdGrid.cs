@@ -79,4 +79,9 @@ public class ThirdGrid : MonoBehaviour
     {
         return grid;
     }
+
+    public void deleteGrid()
+    {
+        grid.Clear();
+    }
 }

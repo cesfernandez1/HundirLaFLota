@@ -17,7 +17,7 @@ public class GridPC : MonoBehaviour
     Boat[] pcBoat = new Boat[8];
     private List<GameObject> grid_squaresPC;
     private List<GameObject> boatPlace;
-    private List<string> boats = new List<string>() { "Lancha", "Lancha", "Lancha", "Buque", "Buque", "Submarino", "Submarino", "Portaaviones"};
+    private List<string> boats;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +37,11 @@ public class GridPC : MonoBehaviour
         CreateGrid();
     }
 
-    private void CreateGrid()
+    public void CreateGrid()
     {
         grid_squaresPC = new List<GameObject>();
         AddGridSquares();
+        boats = new List<string>() { "Lancha", "Lancha", "Lancha", "Buque", "Buque", "Submarino", "Submarino", "Portaaviones" };
 
         do
         {
@@ -204,5 +205,10 @@ public class GridPC : MonoBehaviour
             return 5;
         }
         return 0;
+    }
+
+    public void deleteGrid()
+    {
+        grid_squaresPC.Clear();
     }
 }

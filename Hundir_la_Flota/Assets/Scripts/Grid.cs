@@ -96,4 +96,9 @@ public class Grid : MonoBehaviour
     {
         return grid_squares;
     }
+
+    public void deleteGrid()
+    {
+        grid_squares.Clear();
+    }
 }

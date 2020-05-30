@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ModesMenu : MonoBehaviour
 {
     public GameObject mainMenuScreen;
     public GameObject multiplayerMenuScreen;
     public GameObject gridOrderScreen;
+    public GameObject dropD;
 
 
     // Start is called before the first frame update
@@ -19,11 +21,6 @@ public class ModesMenu : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void IndividualMode()
-    {
-
     }
 
     public void MultiplayerMenuScreen()
@@ -42,5 +39,9 @@ public class ModesMenu : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         gridOrderScreen.SetActive(true);
+        gridOrderScreen.GetComponent<Grid>().CreateGrid();
+        gridOrderScreen.GetComponent<GridPC>().CreateGrid();
+        //gridOrderScreen.GetComponent<DropDownBoats>().FillBoatList();
+        dropD.GetComponent<DropDownBoats>().FillBoatList();
     }
 }

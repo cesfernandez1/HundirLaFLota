@@ -51,4 +51,10 @@ public class BoatsStateController : MonoBehaviour
     {
         return boatsSunkenPC;
     }
+
+    public void deleteData()
+    {
+        boatsSunken = 0;
+        boatsSunkenPC = 0;
+    }
 }

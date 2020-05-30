@@ -82,7 +82,7 @@ public class AddBoats : MonoBehaviour
 
         if (isAdded.GetComponent<boatIsAdded>().getAdded())
         {
-            dropDownBoats.GetComponent<DropDownBoats>().getValue();
+            dropDownBoats.GetComponent<DropDownBoats>().getValue(boat);
         }
         else
         {
@@ -96,7 +96,7 @@ public class AddBoats : MonoBehaviour
             startButton.enabled = true;
         }
 
-
+        dropDownBoats.GetComponent<DropDownBoats>().updateDropDown();
 
         Debug.Log("Has seleccionado la Columna:" + cols + " Fila: " + rows);
 
@@ -227,6 +227,11 @@ public class AddBoats : MonoBehaviour
     private void showPopUpPanel()
     {
         popUp.SetActive(true);
+    }
+
+    public void removeData()
+    {
+        nBoat = 0;
     }
 
 }
