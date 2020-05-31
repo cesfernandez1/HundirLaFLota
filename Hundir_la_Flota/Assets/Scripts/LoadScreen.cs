@@ -13,6 +13,7 @@ public class LoadScreen : MonoBehaviour
     void Start()
     {
         AnimateBar();
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -30,5 +31,6 @@ public class LoadScreen : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         mainMenuScreen.SetActive(true);
+        Cursor.visible = true;
     }
 }
