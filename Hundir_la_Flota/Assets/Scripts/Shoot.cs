@@ -34,6 +34,10 @@ public class Shoot : MonoBehaviour
 
     public void getValues()
     {
+
+        this.gameObject.GetComponent<CountDownTimer>().stopCountDown();
+
+
         selectedGridSquare = GameObject.Find("SelectedGridSquare");
 
         cols = selectedGridSquare.GetComponent<prueba>().getCol();
@@ -108,10 +112,15 @@ public class Shoot : MonoBehaviour
     {
 
         coverPanel.SetActive(true);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
 
         //add here the function that IA shoot
 
         myGrid.GetComponent<IA>().shoot();
+    }
+
+    public void shootIA()
+    {
+        StartCoroutine(waiter());
     }
 }

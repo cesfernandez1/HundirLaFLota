@@ -80,7 +80,7 @@ public class SecondGrid : MonoBehaviour
             var pos_y_offset = offset.y * rowNumber;
             square.GetComponent<RectTransform>().anchoredPosition = new Vector3(startPosition.x + pos_x_offset, startPosition.y - pos_y_offset);
             square.GetComponent<Button>().interactable = true;
-            square.GetComponent<Image>().color = Color.white;
+            //square.GetComponent<Image>().color = Color.white;
             colNumber++;
         }
     }

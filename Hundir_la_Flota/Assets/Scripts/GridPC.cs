@@ -32,9 +32,9 @@ public class GridPC : MonoBehaviour
 
     private void OnEnable()
     {
-        if (grid_square.GetComponent<GridSquare>() == null)
-            Debug.LogError("grid_square object need to have GridSquare script attached");
-        CreateGrid();
+        //if (grid_square.GetComponent<GridSquare>() == null)
+        //    Debug.LogError("grid_square object need to have GridSquare script attached");
+        //CreateGrid();
     }
 
     public void CreateGrid()

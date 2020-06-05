@@ -6,6 +6,7 @@ public class StartGame : MonoBehaviour
 {
 
     public GameObject gamePanel;
+    public GameObject timerPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class StartGame : MonoBehaviour
     public void startGame()
     {
         this.gameObject.SetActive(false);
+        timerPanel.SetActive(true);
         gamePanel.SetActive(true);
         //gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<Grid>().gridSquare());
         gamePanel.GetComponent<SecondGrid>().FillList(this.gameObject.GetComponent<GridPC>().getGrid());

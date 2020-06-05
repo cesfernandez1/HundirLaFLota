@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject modesMenu;
     public AudioSource audio;
+
+    public GameObject closeGamePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,6 @@ public class MainMenu : MonoBehaviour
 
     public void CloseGame()
     {
-        Application.Quit();
+        closeGamePanel.SetActive(true);
     }
 }
