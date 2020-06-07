@@ -8,6 +8,7 @@ public class PopUpPanel : MonoBehaviour
 
     public GameObject gamePanel;
     public GameObject menuPanel;
+    public GameObject gridorderScreen;
 
     public Text message;
     // Start is called before the first frame update
@@ -31,6 +32,13 @@ public class PopUpPanel : MonoBehaviour
     public void getBackOnMenu()
     {
         this.gameObject.SetActive(false);
+        gamePanel.GetComponent<SecondGrid>().deleteGrid();
+        gamePanel.GetComponent<ThirdGrid>().deleteGrid();
+        gamePanel.GetComponent<BoatsStateController>().deleteData();
+        gamePanel.GetComponent<CountDownTimer>().stopCountDown();
+        gridorderScreen.GetComponent<AddBoats>().removeData();
+        gridorderScreen.GetComponent<Grid>().deleteGrid();
+        gridorderScreen.GetComponent<GridPC>().deleteGrid();
         gamePanel.SetActive(false);
         menuPanel.SetActive(true);
     }

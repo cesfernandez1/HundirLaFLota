@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.05660379, g: 0.055268794, b: 0.055268794, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2466,6 +2466,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 455344923}
+        m_MethodName: pauseTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &358107157
@@ -3534,6 +3545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePanel: {fileID: 455344913}
   menuPanel: {fileID: 1595906304}
+  gridorderScreen: {fileID: 0}
   message: {fileID: 1773692024}
 --- !u!1 &514236066
 GameObject:
@@ -4802,6 +4814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinishGameButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1474483916295013544, guid: c133cea28029c7848b7f4bc2dfdb532e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7663416181748350984, guid: c133cea28029c7848b7f4bc2dfdb532e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5253,6 +5270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePanel: {fileID: 455344913}
   timerPanel: {fileID: 20883903}
+  starGamePanel: {fileID: 20883903}
 --- !u!114 &867867419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6466,7 +6484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1133570049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7502,7 +7520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1246499524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7535,7 +7553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0.4}
+  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0.92941177}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10287,8 +10305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.999973, y: 71.6001}
-  m_SizeDelta: {x: 472, y: 91.8}
+  m_AnchoredPosition: {x: 41, y: 41}
+  m_SizeDelta: {x: 535.4, y: 169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773692024
 MonoBehaviour:
@@ -10316,7 +10334,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 84
+    m_MaxSize: 104
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -12010,6 +12028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modesMenuScreen: {fileID: 2029020546}
   gamePanel: {fileID: 455344913}
+  gridorderScreen: {fileID: 867867413}
 --- !u!1 &2029020546
 GameObject:
   m_ObjectHideFlags: 0
@@ -12028,7 +12047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2029020547
 RectTransform:
   m_ObjectHideFlags: 0

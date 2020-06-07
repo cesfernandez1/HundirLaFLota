@@ -14,14 +14,19 @@ public class BoatsStateController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        txtBoatsSunkenPC.text = boatsSunkenPC.ToString();
-        txtBoatsSunken.text = boatsSunken.ToString();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void startBoatsCounter()
+    {
+        txtBoatsSunkenPC.text = boatsSunkenPC.ToString();
+        txtBoatsSunken.text = boatsSunken.ToString();
     }
 
     private void Reload()

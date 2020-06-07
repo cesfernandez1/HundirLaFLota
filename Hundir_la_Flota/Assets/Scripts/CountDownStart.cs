@@ -15,6 +15,12 @@ public class CountDownStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public void startGame()
+    {
+        countDownTimer = 3;
         StartCoroutine(StartCountDown());
     }
 

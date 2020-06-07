@@ -7,6 +7,7 @@ public class ExitGamePanel : MonoBehaviour
 
     public GameObject modesMenuScreen;
     public GameObject gamePanel;
+    public GameObject gridorderScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,21 @@ public class ExitGamePanel : MonoBehaviour
     public void exitGame()
     {
         this.gameObject.SetActive(false);
+        gridorderScreen.GetComponent<AddBoats>().removeData();
+        gridorderScreen.GetComponent<Grid>().deleteGrid();
+        gridorderScreen.GetComponent<GridPC>().deleteGrid();
+        gamePanel.GetComponent<SecondGrid>().deleteGrid();
+        gamePanel.GetComponent<ThirdGrid>().deleteGrid();
+        gamePanel.GetComponent<BoatsStateController>().deleteData();
+        gamePanel.GetComponent<CountDownTimer>().stopCountDown();
         gamePanel.SetActive(false);
         modesMenuScreen.SetActive(true);
-        this.gameObject.GetComponent<SecondGrid>().deleteGrid();
-        this.gameObject.GetComponent<ThirdGrid>().deleteGrid();
-        this.gameObject.GetComponent<BoatsStateController>().deleteData();
         //Reiniciar TODO 
     }
 
     public void stayGame()
     {
         this.gameObject.SetActive(false);
+        gamePanel.GetComponent<CountDownTimer>().resumeTimer();
     }
 }
