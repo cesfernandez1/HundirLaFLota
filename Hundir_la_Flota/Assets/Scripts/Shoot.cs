@@ -14,6 +14,8 @@ public class Shoot : MonoBehaviour
 
     public GameObject coverPanel;
 
+    public GameObject nonSelectedGridquare;
+
     private int cols;
     private int rows;
 
@@ -43,9 +45,21 @@ public class Shoot : MonoBehaviour
         cols = selectedGridSquare.GetComponent<prueba>().getCol();
         rows = selectedGridSquare.GetComponent<prueba>().getRow();
 
-        shoot(cols,rows);
+        if (cols == -1 && rows == -1)
+        {
+            this.gameObject.GetComponent<CountDownTimer>().pauseTimer();
+            nonSelectedGridquare.SetActive(true);
+        }
+        else
+        {
+            selectedGridSquare.GetComponent<prueba>().deleteGridSquare();
 
-        StartCoroutine(waiter());
+            shoot(cols, rows);
+
+            StartCoroutine(waiter());
+        }
+
+
     }
 
     private void shoot(int col, int row)

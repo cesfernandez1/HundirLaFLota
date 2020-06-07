@@ -38,4 +38,11 @@ public class prueba : MonoBehaviour
     {
         return rows;
     }
+
+    public void deleteGridSquare()
+    {
+        gridSquare = null;
+        cols = -1;
+        rows = -1;
+    }
 }

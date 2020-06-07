@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CountDownTimer : MonoBehaviour
 {
 
-    private float countTimer = 10f;
+    private float countTimer = 6f;
     private bool timerRun = false;
     private bool iaShoot = false;
 
@@ -26,7 +26,7 @@ public class CountDownTimer : MonoBehaviour
 
     public void startCountDown()
     {
-        countTimer = 10f;
+        countTimer = 6f;
         timerRun = true;
         iaShoot = true;
         StartCoroutine(startTimer());
@@ -36,7 +36,7 @@ public class CountDownTimer : MonoBehaviour
     IEnumerator startTimer()
     {
         //countTimer = 10f;
-        while (countTimer > -0.1f && timerRun)
+        while (countTimer > -0.0f && timerRun)
         {
             timer.text = countTimer.ToString("0.0");
 
