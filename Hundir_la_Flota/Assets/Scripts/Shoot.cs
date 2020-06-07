@@ -21,19 +21,6 @@ public class Shoot : MonoBehaviour
 
     private List<GameObject> grid;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void getValues()
     {
 
@@ -65,7 +52,6 @@ public class Shoot : MonoBehaviour
     private void shoot(int col, int row)
     {
         grid = myGrid.GetComponent<SecondGrid>().getGrid();
-
         foreach(GameObject gridSquare in grid)
         {
             if ((col == gridSquare.GetComponent<GridSquare>().getCol()) && (row == gridSquare.GetComponent<GridSquare>().getRow()))
@@ -85,12 +71,10 @@ public class Shoot : MonoBehaviour
                             }
                         }
                     }
-
                     foreach(GameObject gridS in boatList)
                     {
                         gridS.GetComponent<GridSquare>().addImpact();
                     }
-
                     if (gridSquare.GetComponent<GridSquare>().isSunken())
                     {
 
@@ -114,7 +98,6 @@ public class Shoot : MonoBehaviour
                 }
             }
         }
-
         if (8 == myGrid.GetComponent<BoatsStateController>().getBoats())
         {
             string msg = "¡Enhorabuena! Has ganado";
@@ -126,10 +109,9 @@ public class Shoot : MonoBehaviour
     {
 
         coverPanel.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         //add here the function that IA shoot
-
         myGrid.GetComponent<IA>().shoot();
     }
 

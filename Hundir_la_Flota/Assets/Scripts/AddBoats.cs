@@ -39,12 +39,6 @@ public class AddBoats : MonoBehaviour
         startButton.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void getGridDimmensions()
     {
 
@@ -97,8 +91,6 @@ public class AddBoats : MonoBehaviour
         }
 
         dropDownBoats.GetComponent<DropDownBoats>().updateDropDown();
-
-        Debug.Log("Has seleccionado la Columna:" + cols + " Fila: " + rows);
 
     }
 
@@ -163,7 +155,6 @@ public class AddBoats : MonoBehaviour
 
     private bool checkSpace(int gridC, int gridR, int boatS, int c, int r, int o)
     {
-
         boatPlace = new List<GameObject>();
 
         if (o == 0)
@@ -187,7 +178,6 @@ public class AddBoats : MonoBehaviour
             {
                 return false;
             }
-
         }
         else
         {
@@ -210,9 +200,7 @@ public class AddBoats : MonoBehaviour
             {
                 return false;
             }
-
         }
-
         foreach (GameObject gridSquare in boatPlace)
         {
             if (gridSquare.GetComponent<GridSquare>().getBoat())
@@ -220,7 +208,6 @@ public class AddBoats : MonoBehaviour
                 return false;
             }
         }
-
         return true;
     }
 

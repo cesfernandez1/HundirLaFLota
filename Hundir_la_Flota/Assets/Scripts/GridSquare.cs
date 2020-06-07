@@ -14,15 +14,6 @@ public class GridSquare : MonoBehaviour
     private bool shooted = false;
     private int shoot;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     public void setPosition(int c, int r)
     {

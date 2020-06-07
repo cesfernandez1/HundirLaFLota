@@ -18,24 +18,6 @@ public class GridPC : MonoBehaviour
     private List<GameObject> grid_squaresPC;
     private List<GameObject> boatPlace;
     private List<string> boats;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnEnable()
-    {
-        //if (grid_square.GetComponent<GridSquare>() == null)
-        //    Debug.LogError("grid_square object need to have GridSquare script attached");
-        //CreateGrid();
-    }
 
     public void CreateGrid()
     {
@@ -70,12 +52,10 @@ public class GridPC : MonoBehaviour
                 rowNumber++;
                 colNumber = 0;
             }
-
             square.GetComponent<GridSquare>().setPosition(colNumber, rowNumber);
             square.GetComponent<GridSquare>().setValue(0);
             colNumber++;
         }
-
     }
 
     private void AddBoats()
@@ -125,7 +105,6 @@ public class GridPC : MonoBehaviour
 
     private bool checkSpace(int columns, int rows, int orientation, int boatSize, int gridCols, int gridrows)
     {
-
         boatPlace = new List<GameObject>();
 
         if(orientation == 0)
@@ -172,7 +151,6 @@ public class GridPC : MonoBehaviour
                 return false;
             }
         }
-
         foreach(GameObject gridSquare in boatPlace)
         {
             if (gridSquare.GetComponent<GridSquare>().getBoat())

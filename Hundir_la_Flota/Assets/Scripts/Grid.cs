@@ -12,27 +12,7 @@ public class Grid : MonoBehaviour
     public Vector2 startPosition = new Vector2(0.0f, 0.0f);
     public float square_scale = 1.0f;
 
-
     private List<GameObject> grid_squares;
-
-    void Start()
-    {
-        //if (grid_square.GetComponent<GridSquare>() == null)
-        //    Debug.LogError("grid_square object need to have GridSquare script attached");
-        //CreateGrid();
-    }
-
-    private void OnEnable()
-    {
-        if (grid_square.GetComponent<GridSquare>() == null)
-            Debug.LogError("grid_square object need to have GridSquare script attached");
-        CreateGrid();
-    }
-
-
-    void Update()
-    {
-    }
 
     public void CreateGrid()
     {

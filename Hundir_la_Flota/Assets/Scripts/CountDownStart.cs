@@ -6,17 +6,8 @@ using UnityEngine.UI;
 public class CountDownStart : MonoBehaviour
 {
     private int countDownTimer = 3;
-
     public GameObject gamePanel;
-
-
     public Text timer;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void startGame()
     {

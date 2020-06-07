@@ -11,31 +11,10 @@ public class SecondGrid : MonoBehaviour
     public float square_scale = 1.0f;
     public Vector2 startPosition = new Vector2(0.0f, 0.0f);
     public float every_square_offset = 0.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    private void OnEnable()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void FillList(List<GameObject> list)
     {
         grid = list;
-
-        //foreach(GameObject gridSquare in grid)
-        //{
-        //    col = gridSquare.GetComponent<GridSquare>().getCol();
-        //    value = gridSquare.GetComponent<GridSquare>().getValue();
-        //}
     }
 
     public void CreateGrid()

@@ -12,19 +12,6 @@ public class ModesMenu : MonoBehaviour
     private Button addBoats;
     private Button startGame;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void MultiplayerMenuScreen()
     {
         this.gameObject.SetActive(false);
@@ -47,7 +34,6 @@ public class ModesMenu : MonoBehaviour
         startGame.enabled = false;
         gridOrderScreen.GetComponent<Grid>().CreateGrid();
         gridOrderScreen.GetComponent<GridPC>().CreateGrid();
-        //gridOrderScreen.GetComponent<DropDownBoats>().FillBoatList();
         dropD.GetComponent<DropDownBoats>().FillBoatList();
     }
 }

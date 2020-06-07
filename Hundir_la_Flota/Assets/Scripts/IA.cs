@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class IA : MonoBehaviour
 {
-
     private int col;
     private int row;
     private int p;
@@ -28,24 +27,8 @@ public class IA : MonoBehaviour
 
     public GameObject coverPanel;
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void shoot()
     {
-
         grid = panel.GetComponent<ThirdGrid>().getGrid();
 
 
@@ -79,11 +62,9 @@ public class IA : MonoBehaviour
                     }
                 }
 
-
                 int n = Random.Range(0, finalCoords.Count);
 
                 int[] selectedCoords = finalCoords[n];
-
 
                 col = selectedCoords[0];
                 row = selectedCoords[1];
@@ -103,8 +84,6 @@ public class IA : MonoBehaviour
             }
 
         }
-
-
         foreach (GameObject gridSquare in grid)
         {
             if ((col == gridSquare.GetComponent<GridSquare>().getCol()) && (row == gridSquare.GetComponent<GridSquare>().getRow()))
@@ -136,8 +115,6 @@ public class IA : MonoBehaviour
                         fourthPos[0] = gridSquare.GetComponent<GridSquare>().getCol();
                         fourthPos[1] = gridSquare.GetComponent<GridSquare>().getRow();
                     }
-
-
                     foreach (GameObject gridS in grid)
                     {
                         if (gridS.GetComponent<GridSquare>().getBoat())
@@ -148,12 +125,10 @@ public class IA : MonoBehaviour
                             }
                         }
                     }
-
                     foreach (GameObject gridS in boatList)
                     {
                         gridS.GetComponent<GridSquare>().addImpact();
                     }
-
                     if (gridSquare.GetComponent<GridSquare>().isSunken())
                     {
 
@@ -162,7 +137,6 @@ public class IA : MonoBehaviour
                             gridS.GetComponent<Image>().color = Color.red;
                             boatTouched = false;
                             resetPositions();
-
                         }
                         panel.GetComponent<BoatsStateController>().addBoatSunkenPC();
                     }
