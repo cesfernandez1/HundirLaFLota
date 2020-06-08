@@ -19,6 +19,8 @@ public class GridPC : MonoBehaviour
     private List<GameObject> boatPlace;
     private List<string> boats;
 
+    private List<GameObject> invalidGridSquaresList = new List<GameObject>();
+
     public void CreateGrid()
     {
         grid_squaresPC = new List<GameObject>();
@@ -77,6 +79,7 @@ public class GridPC : MonoBehaviour
         if (checkSpace(cols,rows,orientation,boatSize,gridCols,gridRows))
         {
             Placeboat(cols,rows,boatSize,orientation,myColor);
+            invalidGridSquares(cols, rows, boatSize, orientation);
             boats.Remove(boat);
             boatsAdded++;
         }
@@ -116,6 +119,8 @@ public class GridPC : MonoBehaviour
                 {
                     if(((columns == gridSquare.GetComponent<GridSquare>().getCol()) && (rows == gridSquare.GetComponent<GridSquare>().getRow())) && (p != boatSize))
                     {
+                        if (!validCoordinates(columns, rows))
+                            return false;
                         boatPlace.Add(gridSquare);
                         if (gridSquare.GetComponent<GridSquare>().getBoat())
                             return false;
@@ -138,6 +143,8 @@ public class GridPC : MonoBehaviour
                 {
                     if((columns == gridSquare.GetComponent<GridSquare>().getCol()) && (rows == gridSquare.GetComponent<GridSquare>().getRow()) && (p != boatSize))
                     {
+                        if (!validCoordinates(columns, rows))
+                            return false;
                         boatPlace.Add(gridSquare);
                         if (gridSquare.GetComponent<GridSquare>().getBoat())
                             return false;
@@ -185,8 +192,132 @@ public class GridPC : MonoBehaviour
         return 0;
     }
 
+
+    private void invalidGridSquares(int col, int row, int boatSize, int orien)
+    {
+        int p = 0;
+        int c = col;
+        int r = row;
+        if (orien == 0)
+        {
+            if (row > 0)
+            {
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && ((row - 1) == gridSquare.GetComponent<GridSquare>().getRow()) && (p != boatSize))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                        c++;
+                        p++;
+                    }
+                }
+            }
+            if (row < 9)
+            {
+                p = 0;
+                c = col;
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if ((c == gridSquare.GetComponent<GridSquare>().getCol()) && ((row + 1) == gridSquare.GetComponent<GridSquare>().getRow()) && (p != boatSize))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                        c++;
+                        p++;
+                    }
+                }
+            }
+            if (col > 0)
+            {
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if (((col - 1) == gridSquare.GetComponent<GridSquare>().getCol()) && (row == gridSquare.GetComponent<GridSquare>().getRow()))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                    }
+                }
+            }
+            if ((col + boatSize) < 9)
+            {
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if (((col + boatSize) == gridSquare.GetComponent<GridSquare>().getCol()) && (row == gridSquare.GetComponent<GridSquare>().getRow()))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            p = 0;
+            if (col > 0)
+            {
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if (((col - 1) == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()) && (p != boatSize))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                        r++;
+                        p++;
+                    }
+                }
+            }
+            if (col < 9)
+            {
+                p = 0;
+                r = row;
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if (((col + 1) == gridSquare.GetComponent<GridSquare>().getCol()) && (r == gridSquare.GetComponent<GridSquare>().getRow()) && (p != boatSize))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                        r++;
+                        p++;
+                    }
+                }
+            }
+            if (row > 0)
+            {
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if ((col == gridSquare.GetComponent<GridSquare>().getCol()) && ((row - 1) == gridSquare.GetComponent<GridSquare>().getRow()))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                    }
+                }
+            }
+            if ((row + boatSize) < 9)
+            {
+                foreach (GameObject gridSquare in grid_squaresPC)
+                {
+                    if ((col == gridSquare.GetComponent<GridSquare>().getCol()) && ((row + boatSize) == gridSquare.GetComponent<GridSquare>().getRow()))
+                    {
+                        invalidGridSquaresList.Add(gridSquare);
+                    }
+                }
+            }
+        }
+    }
+
+    private bool validCoordinates(int col, int row)
+    {
+        if (invalidGridSquaresList.Count > 0)
+        {
+            foreach (GameObject gridSquare in invalidGridSquaresList)
+            {
+                if ((col == gridSquare.GetComponent<GridSquare>().getCol()) && (row == gridSquare.GetComponent<GridSquare>().getRow()))
+                    return false;
+            }
+        }
+        return true;
+    }
+
     public void deleteGrid()
     {
         grid_squaresPC.Clear();
+        boatsAdded = 0;
+        nBoat = 0;
+        invalidGridSquaresList.Clear();
     }
 }
