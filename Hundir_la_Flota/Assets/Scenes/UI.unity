@@ -1615,7 +1615,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Eliga una orientaci\xF3n"
+  m_Text: "Elija una orientaci\xF3n"
 --- !u!222 &248847999
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11803,7 +11803,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Eliga una embarcaci\xF3n"
+  m_Text: "Elija una embarcaci\xF3n"
 --- !u!222 &1977379604
 CanvasRenderer:
   m_ObjectHideFlags: 0
